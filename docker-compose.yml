@@ -1,0 +1,13 @@
+version: "2.2"
+services:
+  phantomjs:
+    build:
+      ./phantomjs
+    command: /start_phantomjs.sh 
+    container_name: phantomjs
+    healthcheck:
+      test: curl http://127.0.0.1:8910 || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 2
+    image: phantomjs:test
